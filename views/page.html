@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block title %}{{title}}{% endblock %}
+{% block content %}
+  <h6>{{date}}</h6>
+  <!-- {{page.status|marked}} -->
+  <br>
+  {{page.content|marked}}
+  <br>
+  <a href="{{page.full_route}}/edit" class="btn btn-warning btn-xs">Edit</a>
+  <a href="{{page.full_route}}/delete" class="btn btn-danger btn-xs">Delete</a>
+  <a href="{{page.full_route}}/similar" class="btn btn-success btn-xs">similar pages</a>
+  {% if page.tags.length>0 %}
+    {% for tag in page.tags %}
+      <a href="/tag/{{tag}}" class="btn btn-primary btn-xs">#{{tag}}</a>
+    {% endfor %}
+  {% endif %}
+{% endblock %}
